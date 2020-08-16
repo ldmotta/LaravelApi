@@ -6,17 +6,19 @@
 
 ## Instalation
 
-Access your server root path, and execute the command below to clone the application. (e.g. cd /var/www/html/).
+
+Acesse o caminho raiz do seu servidor e execute o comando abaixo para clonar o projeto. (por exemplo, cd /var/www/html/).
 
 ```
 cd /server/root/path
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
-* If you are familiarized with the ```ls -l``` command, you may want to clone the project in another folder and create a symbolic link form your application to your server root path
+* Se você estiver utilizando Mac ou Linux, você também pode clonar o projeto em outra pasta do seu computador, e executar o comando ```ls -l``` para criar um link simbólico de seu projeto para o caminho raiz do servidor.
 
 ```
 cd /var/www/html
+
 ls -l ~/full_application_path /var/www/html/laravel_api
 ```
 
@@ -27,13 +29,13 @@ ls -l ~/full_application_path /var/www/html/laravel_api
 composer create-project --prefer-dist laravel/laravel pastelaria "6.*"
 ``` -->
 
-To resolve CORS isuers, install the [laravel-cors](https://github.com/spatie/laravel-cors)
+Para resolver problema de CORS, instale o [laravel-cors](https://github.com/spatie/laravel-cors)
 
 ```bash
 composer require spatie/laravel-cors
 ```
 
-On the .env file, define your Mail Server settings to test send email, and your db settings to connect to your database.
+No arquivo .env, defina as configurações do servidor de e-mail para testar o envio de e-mail e as configurações de banco de dados para se conectar ao banco de dados da aplicação.
 
 **Mail settings:**
 
@@ -47,7 +49,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="from_email@email.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-* If you are using another mail settings instead of mailtrap, basicaly you need to change ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD``` and ```MAIL_FROM_ADDRESS```
+* Se você estiver usando outro servidor de e-mail em vez de mailtrap, basicamente você precisa mudar ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD``` and ```MAIL_FROM_ADDRESS```
 
 **DB settings:**
 
@@ -60,17 +62,18 @@ DB_USERNAME=your_db_username
 DB_PASSWORD=your_db_password
 ```
 
-Execute the migration command to create the tables
+Execute o comando de migração para criar as tabela.
 
 ```
 php artisan migrate
 ```
 
-To populate default informations on your database, execute the command below
+Para popular a tabela de produtos com, execute o comando abaixo.
 ```
 php artisan db:seed
 ```
-To execute the server application, run tha command:
+
+Para executar o projeto, rode o comando abaixo no terminal:
 
 ```
 php artisan serve
