@@ -2,14 +2,14 @@
 
 ## Dependencies
 
-* Laravel 6.x
+* laravel-cors
 
 ## Instalation
 
-Acesse o [GitHub da aplicação](https://github.com/ldmotta/LaravelApi) para clonar o projeto da API, ou execute o comando abaixo:
+Execute the command below to clone the application.
 
 ```
-https://github.com/ldmotta/LaravelApi.git
+git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
 <!-- Execute o comando de instalação do Laravel 6, executando o comando abaixo no terminal.
@@ -18,8 +18,22 @@ https://github.com/ldmotta/LaravelApi.git
 composer create-project --prefer-dist laravel/laravel pastelaria "6.*"
 ``` -->
 
-Para resolver o problema de CORS, caso você vá acessar essa API de outro servidor, instale o [laravel-cors](https://github.com/spatie/laravel-cors)
+To resolve CORS isuers, install the [laravel-cors](https://github.com/spatie/laravel-cors)
 
 ```bash
 composer require spatie/laravel-cors
 ```
+
+In the .env file, configure your mailtrap account settings or another Mail Server application to test send email.
+
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=**smtp.mailtrap.io**
+MAIL_PORT=2525
+MAIL_USERNAME=**your_username**
+MAIL_PASSWORD=**yout_password**
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=**"from_email@email.com"**
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
