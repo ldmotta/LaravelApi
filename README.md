@@ -39,7 +39,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 **DB settings:**
 
-5. Crie uma base de dados para a aplicação. Ex. laravel_api e configura no arquivo .env a sessão de variáveis de acesso ao banco. Ex.
+5. Crie uma base de dados para a aplicação. Ex. laravel_api e configure no arquivo .env a sessão de variáveis de acesso ao banco. Ex.
 
 ```
 DB_CONNECTION=mysql
