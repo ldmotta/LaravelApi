@@ -6,11 +6,19 @@
 
 ## Instalation
 
-Execute the command below to clone the application.
+Access your server root path, and execute the command below to clone the application. (e.g. /var/www/html/).
 
 ```
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
+
+* If you are familiarized with the ```ls -l``` command, you may want to create a symbolic link form your application to your server root path
+
+```
+cd /var/www/html
+ls -l ~/full_application_path /var/www/html/laravel_api
+```
+
 
 <!-- Execute o comando de instalação do Laravel 6, executando o comando abaixo no terminal.
 
