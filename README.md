@@ -13,7 +13,7 @@ cd /server/root/path
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
-* If you are familiarized with the ```ls -l``` command, you may want to create a symbolic link form your application to your server root path
+* If you are familiarized with the ```ls -l``` command, you may want to clone the project in another folder and create a symbolic link form your application to your server root path
 
 ```
 cd /var/www/html
