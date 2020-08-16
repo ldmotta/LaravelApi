@@ -38,7 +38,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="from_email@email.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-* If you are using another mail settings instead of mailtrap, basicaly, you need to change ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD``` and ```MAIL_FROM_ADDRESS```
+* If you are using another mail settings instead of mailtrap, basicaly you need to change ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD``` and ```MAIL_FROM_ADDRESS```
 
 **DB settings:**
 
@@ -46,7 +46,18 @@ MAIL_FROM_NAME="${APP_NAME}"
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravel_api
-DB_USERNAME=db_user
-DB_PASSWORD=db_pass
+DB_DATABASE=your_database_name
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
+```
+
+Execute the migration command to create the tables
+
+```
+php artisan migrate
+```
+
+To populate default informations on your database, execute the command below
+```
+php artisan db:seed
 ```
