@@ -79,4 +79,4 @@ Para executar o projeto, rode o comando abaixo no terminal:
 php artisan serve
 ```
 
-Para testar a aplicação, você pode utilizar o arquivo de collections do Postman ()
+Para testar a aplicação, você pode utilizar o arquivo de collections do Postman (Laravel_Api.postman_collection.json), que está localizado na raíz do projeto.
