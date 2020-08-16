@@ -24,16 +24,16 @@ To resolve CORS isuers, install the [laravel-cors](https://github.com/spatie/lar
 composer require spatie/laravel-cors
 ```
 
-In the .env file, configure your mailtrap account settings or another Mail Server application to test send email.
+On the .env file, configure your Mail Server Application to test send email.
 
 ```
 MAIL_DRIVER=smtp
-MAIL_HOST=**smtp.mailtrap.io**
+MAIL_HOST= smtp.mailtrap.io
 MAIL_PORT=2525
-MAIL_USERNAME=**your_username**
-MAIL_PASSWORD=**yout_password**
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=yout_password
 MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS=**"from_email@email.com"**
+MAIL_FROM_ADDRESS="from_email@email.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
