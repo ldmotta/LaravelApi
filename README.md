@@ -6,9 +6,10 @@
 
 ## Instalation
 
-Access your server root path, and execute the command below to clone the application. (e.g. /var/www/html/).
+Access your server root path, and execute the command below to clone the application. (e.g. cd /var/www/html/).
 
 ```
+cd /server/root/path
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
