@@ -8,17 +8,14 @@
 
 ## Instalation
 
-1. Clonar o projeto.
-Abra o terminal, acesse um diretório qualquer da sua unidade de disco rígido e execute o comando abaixo.
+1. Abra o terminal, acesse um diretório qualquer da sua unidade de disco rígido e execute o comando abaixo.
 
 ```
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
-2. Acesse a raiz da aplicação e execute o comando
+2. Acesse a raiz da aplicação e execute o comando ```cd LaravelApi/``` e instale a aplicação via composer
 ```
-cd LaravelApi/
-
 composer install
 ```
 
