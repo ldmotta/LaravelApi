@@ -28,7 +28,7 @@ In the .env file, configure your mailtrap account settings or another Mail Serve
 
 ```
 MAIL_DRIVER=smtp
-MAIL_HOST= **smtp.mailtrap.io**
+MAIL_HOST=**smtp.mailtrap.io**
 MAIL_PORT=2525
 MAIL_USERNAME=**your_username**
 MAIL_PASSWORD=**yout_password**
