@@ -24,7 +24,7 @@ To resolve CORS isuers, install the [laravel-cors](https://github.com/spatie/lar
 composer require spatie/laravel-cors
 ```
 
-On the .env file, define your Mail Server settings to test send email, and your db settings to connect.
+On the .env file, define your Mail Server settings to test send email, and your db settings to connect to your database.
 
 **Mail settings:**
 
@@ -60,4 +60,9 @@ php artisan migrate
 To populate default informations on your database, execute the command below
 ```
 php artisan db:seed
+```
+To execute the server application, run tha command:
+
+```
+php artisan serve
 ```
