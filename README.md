@@ -38,7 +38,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="from_email@email.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-If you are using another mail settings instead of mailtrap, basicaly, you will change ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD```
+* If you are using another mail settings instead of mailtrap, basicaly, you need to change ```MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD``` and ```MAIL_FROM_ADDRESS```
 
 **DB settings:**
 
