@@ -1,5 +1,4 @@
 @component('mail::message')
-# Introduction
 
 <h1>Olá {{ $data['nome'] }}</h1>
 

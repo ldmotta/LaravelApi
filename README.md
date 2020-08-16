@@ -2,10 +2,11 @@
 
 ## Dependencies
 
-* laravel-cors
+* [composer](https://getcomposer.org/)
+* [laravel-cors](https://github.com/spatie/laravel-cors)
+* PHP 7.3 ou superior
 
 ## Instalation
-
 
 Acesse o caminho raiz do seu servidor e execute o comando abaixo para clonar o projeto.
 
@@ -14,12 +15,11 @@ cd /server/root/path
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
-* Se você estiver utilizando Mac ou Linux, você também pode clonar o projeto em outra pasta do seu computador, e executar o comando ```ls -l``` para criar um link simbólico de seu projeto para o caminho raiz do servidor.
+* **Opcional**
+* Se você estiver utilizando Mac ou Linux, você também pode clonar o projeto em outra pasta do seu computador, e executar o comando ```ln -s``` para criar um link simbólico de seu projeto para o caminho raiz do servidor.
 
 ```
-cd /var/www/html
-
-ls -l ~/full/application/path /var/www/html/laravel_api
+ln -s /full/application/path /var/www/html/laravel_api
 ```
 
 
