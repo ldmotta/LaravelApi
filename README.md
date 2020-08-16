@@ -24,7 +24,7 @@ To resolve CORS isuers, install the [laravel-cors](https://github.com/spatie/lar
 composer require spatie/laravel-cors
 ```
 
-On the .env file, configure your Mail Server Application to test send email.
+On the .env file, define your Mail Server settings to test send email.
 
 ```
 MAIL_DRIVER=smtp
