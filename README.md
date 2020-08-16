@@ -7,7 +7,7 @@
 ## Instalation
 
 
-Acesse o caminho raiz do seu servidor e execute o comando abaixo para clonar o projeto. (por exemplo, cd /var/www/html/).
+Acesse o caminho raiz do seu servidor e execute o comando abaixo para clonar o projeto.
 
 ```
 cd /server/root/path
@@ -19,7 +19,7 @@ git clone https://github.com/ldmotta/LaravelApi.git
 ```
 cd /var/www/html
 
-ls -l ~/full_application_path /var/www/html/laravel_api
+ls -l ~/full/application/path /var/www/html/laravel_api
 ```
 
 
@@ -68,7 +68,7 @@ Execute o comando de migração para criar as tabela.
 php artisan migrate
 ```
 
-Para popular a tabela de produtos com, execute o comando abaixo.
+Para popular a tabela de produtos, execute o comando abaixo.
 ```
 php artisan db:seed
 ```
