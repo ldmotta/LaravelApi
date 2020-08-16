@@ -78,3 +78,5 @@ Para executar o projeto, rode o comando abaixo no terminal:
 ```
 php artisan serve
 ```
+
+Para testar a aplicação, você pode utilizar o arquivo de collections do Postman ()
