@@ -101,7 +101,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/clientes?nome=Teste 8&email=teste3@gmail.com&telefone=1155632032&nascimento=2002-07-01&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v1/clientes?nome=Wesley Massine&email=teste@email.com&telefone=(1112 980482957&nascimento=&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -113,19 +113,19 @@
 					"query": [
 						{
 							"key": "nome",
-							"value": "Teste 8"
+							"value": "Wesley Massine"
 						},
 						{
 							"key": "email",
-							"value": "teste3@gmail.com"
+							"value": "teste@email.com"
 						},
 						{
 							"key": "telefone",
-							"value": "1155632032"
+							"value": "(1112 980482957"
 						},
 						{
 							"key": "nascimento",
-							"value": "2002-07-01"
+							"value": ""
 						},
 						{
 							"key": "endereco",

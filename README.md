@@ -19,9 +19,9 @@ git clone https://github.com/ldmotta/LaravelApi.git
 composer install
 ```
 
-3. Utilize um editor de sua preferência, e na raíz do projeto, renomeie o arquivo ```.env.example``` para ```.env```
+3. Após finalizar a instalação renomeie o arquivo ```.env.example``` localizado na raiz do projeto, para ```.env```
 
-4. No arquivo .env, defina as configurações do servidor de e-mail para testar o envio de e-mail.
+4. Utilizando um editor de sua preferência, abra o arquivo .env, e defina as configurações do servidor de e-mail para testar o envio de e-mail.
 
 **Mail settings:**
 
