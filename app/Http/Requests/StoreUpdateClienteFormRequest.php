@@ -26,7 +26,7 @@ class StoreUpdateClienteFormRequest extends FormRequest
         return [
             'nome' => "required:clientes,nome,{$this->segment(3)},id",
             'email' => "required|email|unique:clientes,email,{$this->segment(3)},id", //valid email 
-            'telefone' => "required|min:10|max:10",
+            'telefone' => "required|regex:/^(\(?\d{2}\)?\s?)?(\d{4,5}\-?\d{4})$/",
             'nascimento' => "required|date",
             'endereco' => "required",
             'bairro' => "required",

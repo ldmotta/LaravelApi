@@ -23,8 +23,9 @@ class StoreUpdatePastelFormRequest extends FormRequest
      */
     public function rules()
     {
+        // 'nome' => "required|unique:pasteis,nome,{$this->segment(3)},id",
         return [
-            'nome' => "required|unique:pasteis,nome,{$this->segment(3)},id",
+            'nome' => "required",
             'preco' => "required",
             'foto' => 'image'
         ];
