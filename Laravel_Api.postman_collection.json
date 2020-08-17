@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "aa239d34-d284-430b-8f0d-3e6e2a221d0e",
+		"_postman_id": "74b97e73-d5ea-4eed-b9d7-c5a867c8025a",
 		"name": "Laravel_Api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,12 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/clientes",
+					"raw": "{{base_url}}/api/v1/clientes",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
+						"v1",
 						"clientes"
 					]
 				}
@@ -29,13 +30,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/clientes",
+					"raw": "{{base_url}}/api/v1/clientes/1/pedidos",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"clientes"
+						"v1",
+						"clientes",
+						"1",
+						"pedidos"
 					]
 				},
 				"description": "Lista todos os pedidos de um determinado cliente"
@@ -48,16 +52,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/pastels",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/pasteis",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
-						"pastels"
+						"v1",
+						"pasteis"
 					]
 				}
 			},
@@ -69,16 +71,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/pastels",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/pedidos",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
-						"pastels"
+						"v1",
+						"pedidos"
 					]
 				}
 			},
@@ -101,7 +101,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/clientes?nome=Wesley Massine&email=teste@email.com&telefone=(1112 980482957&nascimento=&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v1/clientes?nome=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -113,19 +113,19 @@
 					"query": [
 						{
 							"key": "nome",
-							"value": "Wesley Massine"
+							"value": "Luciano Mota"
 						},
 						{
 							"key": "email",
-							"value": "teste@email.com"
+							"value": "ldmotta@gmail.com"
 						},
 						{
 							"key": "telefone",
-							"value": "(1112 980482957"
+							"value": "11980482957"
 						},
 						{
 							"key": "nascimento",
-							"value": ""
+							"value": "1974-08-02"
 						},
 						{
 							"key": "endereco",
@@ -186,12 +186,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/api/pasteis",
+					"raw": "{{base_url}}/api/v1/pasteis",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
+						"v1",
 						"pasteis"
 					]
 				}
@@ -264,7 +265,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{base_url}}/api/v1/pasteis/16",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pasteis",
+						"16"
+					]
 				}
 			},
 			"response": []
@@ -275,7 +285,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{base_url}}/api/v1/pedidos/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pedidos",
+						"1"
+					]
 				}
 			},
 			"response": []
@@ -297,22 +316,48 @@
 					}
 				],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/categories/6?name=Categoria 3",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/clientes/1?nome=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
-						"categories",
-						"6"
+						"v1",
+						"clientes",
+						"1"
 					],
 					"query": [
 						{
-							"key": "name",
-							"value": "Categoria 3"
+							"key": "nome",
+							"value": "Luciano Mota"
+						},
+						{
+							"key": "email",
+							"value": "ldmotta@gmail.com.br"
+						},
+						{
+							"key": "telefone",
+							"value": "11980482957"
+						},
+						{
+							"key": "nascimento",
+							"value": "1974-08-02"
+						},
+						{
+							"key": "endereco",
+							"value": "Rua Soares Passos, 368"
+						},
+						{
+							"key": "complemento",
+							"value": "Casa 1"
+						},
+						{
+							"key": "bairro",
+							"value": "Jd Itacolomi"
+						},
+						{
+							"key": "cep",
+							"value": "04386070"
 						}
 					]
 				}
@@ -346,17 +391,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/pasteis/5?nome=Pastel de Camarão&preco=2.50&_method=PUT",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/pasteis/22?nome=Pastel de Camarão&preco=2.50&_method=PUT",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
+						"v1",
 						"pasteis",
-						"5"
+						"22"
 					],
 					"query": [
 						{
@@ -379,7 +422,7 @@
 		{
 			"name": "Pedido-Update",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -393,22 +436,23 @@
 					}
 				],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/categories/6?name=Categoria 3",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/pedidos?cliente_id=1&pastel_id=[23,22]",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
-						"categories",
-						"6"
+						"v1",
+						"pedidos"
 					],
 					"query": [
 						{
-							"key": "name",
-							"value": "Categoria 3"
+							"key": "cliente_id",
+							"value": "1"
+						},
+						{
+							"key": "pastel_id",
+							"value": "[23,22]"
 						}
 					]
 				}
@@ -432,15 +476,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/clientes/6",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/clientes/6",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
+						"v1",
 						"clientes",
 						"6"
 					]
@@ -496,15 +538,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://pastelaria.com/index.php/api/clientes/6",
-					"protocol": "http",
+					"raw": "{{base_url}}/api/v1/clientes/6",
 					"host": [
-						"pastelaria",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
-						"index.php",
 						"api",
+						"v1",
 						"clientes",
 						"6"
 					]
