@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $fillable = [
-        'cliente_id',
-        'pastel_id'];
+        'client_id',
+        'product_id'];
 
     public function getPedidos()
     {

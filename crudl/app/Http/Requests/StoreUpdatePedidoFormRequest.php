@@ -24,8 +24,8 @@ class StoreUpdatePedidoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'cliente_id' => "required:order,cliente_id,{$this->segment(3)},id",
-            'pastel_id' => "required:order,pastel_id,{$this->segment(3)},id",
+            'client_id' => "required:order,client_id,{$this->segment(3)},id",
+            'product_id' => "required:order,product_id,{$this->segment(3)},id",
         ];
     }
 }

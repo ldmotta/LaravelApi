@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Cliente-List",
+			"name": "Client-List",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -25,7 +25,7 @@
 			"response": []
 		},
 		{
-			"name": "Cliente-List-Orders",
+			"name": "Client-List-Orders",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -85,7 +85,7 @@
 			"response": []
 		},
 		{
-			"name": "Cliente-Create",
+			"name": "Client-Create",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -101,7 +101,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers?nome=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v1/customers?name=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -112,7 +112,7 @@
 					],
 					"query": [
 						{
-							"key": "nome",
+							"key": "name",
 							"value": "Luciano Mota"
 						},
 						{
@@ -169,17 +169,17 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "nome",
+							"key": "name",
 							"value": "Pastel Teste 7",
 							"type": "text"
 						},
 						{
-							"key": "preco",
+							"key": "price",
 							"value": "2.50",
 							"type": "text"
 						},
 						{
-							"key": "foto",
+							"key": "image",
 							"type": "file",
 							"src": "/home/ldmotta/Downloads/connor-coyne-OgqWLzWRSaI-unsplash.jpg"
 						}
@@ -216,7 +216,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order?cliente_id=2&pastel_id=[16,16,16, 18, 18, 17]",
+					"raw": "{{base_url}}/api/v1/order?client_id=2&product_id=[16,16,16, 18, 18, 17]",
 					"host": [
 						"{{base_url}}"
 					],
@@ -227,11 +227,11 @@
 					],
 					"query": [
 						{
-							"key": "cliente_id",
+							"key": "client_id",
 							"value": "2"
 						},
 						{
-							"key": "pastel_id",
+							"key": "product_id",
 							"value": "[16,16,16, 18, 18, 17]"
 						}
 					]
@@ -240,7 +240,7 @@
 			"response": []
 		},
 		{
-			"name": "Cliente-Show",
+			"name": "Client-Show",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -300,7 +300,7 @@
 			"response": []
 		},
 		{
-			"name": "Cliente-Update",
+			"name": "Client-Update",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -316,7 +316,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/1?nome=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v1/customers/1?name=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -328,7 +328,7 @@
 					],
 					"query": [
 						{
-							"key": "nome",
+							"key": "name",
 							"value": "Luciano Mota"
 						},
 						{
@@ -384,14 +384,14 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "foto",
+							"key": "image",
 							"type": "file",
 							"src": "/home/ldmotta/Downloads/connor-coyne-OgqWLzWRSaI-unsplash.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/api/v1/products/22?nome=Pastel de Camarão&preco=2.50&_method=PUT",
+					"raw": "{{base_url}}/api/v1/products/22?name=Pastel de Camarão&price=2.50&_method=PUT",
 					"host": [
 						"{{base_url}}"
 					],
@@ -403,11 +403,11 @@
 					],
 					"query": [
 						{
-							"key": "nome",
+							"key": "name",
 							"value": "Pastel de Camarão"
 						},
 						{
-							"key": "preco",
+							"key": "price",
 							"value": "2.50"
 						},
 						{
@@ -436,7 +436,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order?cliente_id=1&pastel_id=[23,22]",
+					"raw": "{{base_url}}/api/v1/order?client_id=1&product_id=[23,22]",
 					"host": [
 						"{{base_url}}"
 					],
@@ -447,11 +447,11 @@
 					],
 					"query": [
 						{
-							"key": "cliente_id",
+							"key": "client_id",
 							"value": "1"
 						},
 						{
-							"key": "pastel_id",
+							"key": "product_id",
 							"value": "[23,22]"
 						}
 					]
@@ -460,7 +460,7 @@
 			"response": []
 		},
 		{
-			"name": "Cliente-Delete",
+			"name": "Client-Delete",
 			"request": {
 				"method": "DELETE",
 				"header": [

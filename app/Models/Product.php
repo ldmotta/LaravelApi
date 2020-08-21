@@ -12,7 +12,7 @@ class Pastel extends Model
     
     protected $table = 'products';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nome', 'preco', 'foto', 'deleted_at'];
+    protected $fillable = ['name', 'price', 'image', 'deleted_at'];
 
     public function getPasteis()
     {
@@ -20,7 +20,7 @@ class Pastel extends Model
     }
     
     /**
-     * Cria um nome para fazer upload da imagem
+     * Cria um name para fazer upload da imagem
      * @param \Illuminate\Http\Request  $request
      * @param string $imageField
      * @param bool $unique
@@ -28,20 +28,20 @@ class Pastel extends Model
      */
     public function makeImageName($request, $imageField, $unique = false)
     {
-        $nome = Str::kebab($request->nome);       
+        $name = Str::kebab($request->name);       
         if($unique)
-            $nome = md5($request->nome . time());
+            $name = md5($request->name . time());
         $ext = $request->file($imageField)->extension();
-        return "{$nome}.{$ext}"; 
+        return "{$name}.{$ext}"; 
     }
     
     /**
      * Retorna os products com base no array de id's de pastel
      */
-    public function products($pastel_ids)
+    public function products($product_ids)
     {
-        return $this->select('id', 'nome', 'preco', 'foto')
-            ->whereIn('id', $pastel_ids)
+        return $this->select('id', 'name', 'price', 'image')
+            ->whereIn('id', $product_ids)
             ->get();
     }
 }

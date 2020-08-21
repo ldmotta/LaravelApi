@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdatePedidoFormRequest extends FormRequest
+class StoreUpdatePastelFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,11 @@ class StoreUpdatePedidoFormRequest extends FormRequest
      */
     public function rules()
     {
+        // 'name' => "required|unique:products,name,{$this->segment(3)},id",
         return [
-            'cliente_id' => "required|exists:customers,id",
-            'pastel_id' => "required",
+            'name' => "required",
+            'price' => "required",
+            'image' => 'image'
         ];
-        // 'pastel_id' => "required|exists:products,id",
     }
 }

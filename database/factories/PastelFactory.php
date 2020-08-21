@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Pastel::class, function (Faker $faker) {
     return [
-        'nome' => $faker->unique()->word,
-        'preco' => $faker->randomFloat(2, 0, 50),
-        'foto' => "http://lorempixel.com/400/200/food/",
+        'name' => $faker->unique()->word,
+        'price' => $faker->randomFloat(2, 0, 50),
+        'image' => "http://lorempixel.com/400/200/food/",
     ];
 });

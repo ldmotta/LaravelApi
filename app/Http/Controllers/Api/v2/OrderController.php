@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Pastel;
-use App\Models\Cliente;
+use App\Models\Client;
 use App\Http\Requests\StoreUpdatePedidoFormRequest;
 use App\Mail\SendMailUser;
 use Illuminate\Support\Arr;
@@ -17,7 +17,7 @@ class PedidoController extends Controller
     private $pedido;
     private $pastel;
     private $cliente;
-    public function __construct(Pedido $pedido, Pastel $pastel, Cliente $cliente)
+    public function __construct(Pedido $pedido, Pastel $pastel, Client $cliente)
     {
         $this->pedido = $pedido;
         $this->pastel = $pastel;
@@ -46,40 +46,40 @@ class PedidoController extends Controller
     {
         $data = $request->all();
         
-        $pastel_ids = Arr::wrap(json_decode($data['pastel_id']));
+        $product_ids = Arr::wrap(json_decode($data['product_id']));
         
-        if(!$pastel_ids)
+        if(!$product_ids)
             return response()->json(['error' => 'Informe um número inteiro ou um array de inteiros']);
 
         $products = [];
         $subtotal = 0;
-        foreach ($pastel_ids as $pastel_id) {
-            $pastel = $this->pastel->find($pastel_id);
+        foreach ($product_ids as $product_id) {
+            $pastel = $this->pastel->find($product_id);
             if( !$pastel )
-                return response()->json(['error' => "pastel id {$pastel_id} não encontrado"]);
+                return response()->json(['error' => "pastel id {$product_id} não encontrado"]);
             
             if(array_key_exists($pastel->id, $products)) {
                 $products[$pastel->id]->quantidade += 1;
-                $products[$pastel->id]->total = $pastel->preco * $products[$pastel->id]['quantidade'];
+                $products[$pastel->id]->total = $pastel->price * $products[$pastel->id]['quantidade'];
             }else{
                 $products[$pastel->id] = $pastel;
                 $products[$pastel->id]->quantidade = 1;
-                $products[$pastel->id]->total = $pastel->preco;
+                $products[$pastel->id]->total = $pastel->price;
             }
             
-            $subtotal += (float) $pastel->preco;
+            $subtotal += (float) $pastel->price;
         }
 
-        $cliente = $this->cliente->find($data['cliente_id']);
+        $cliente = $this->cliente->find($data['client_id']);
 
-        $data['pastel_id'] = json_encode($pastel_ids);
+        $data['product_id'] = json_encode($product_ids);
         
         $pedido = $this->pedido->create($data);
 
         if($pedido) 
         {
             $email_data = [
-                'nome' => $cliente->nome,
+                'name' => $cliente->name,
                 'products' => $products, 
                 'subtotal' =>  $subtotal
             ];

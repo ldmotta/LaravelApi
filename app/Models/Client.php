@@ -4,14 +4,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Cliente extends Model
+class Client extends Model
 {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'nome',
+        'name',
         'email',
         'telefone',
         'nascimento',
@@ -42,7 +42,7 @@ class Cliente extends Model
     {
         return [
             'id' => $this->id,
-            'nome' =>$this->nome,
+            'name' =>$this->name,
             'email' => $this->email,
             'telefone' => $this->telefone,
             'nascimento' => $this->nascimento,

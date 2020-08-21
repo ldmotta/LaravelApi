@@ -10,8 +10,8 @@ class Pedido extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'cliente_id',
-        'pastel_id',
+        'client_id',
+        'product_id',
         'deleted_at'];
 
     public function getPedidos()
@@ -21,7 +21,7 @@ class Pedido extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Client::class);
     }
 
 }

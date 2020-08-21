@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Cliente;
-use App\Http\Requests\StoreUpdateClienteFormRequest;
+use App\Models\Client;
+use App\Http\Requests\StoreUpdateClientFormRequest;
 
-class ClienteController extends Controller
+class ClientController extends Controller
 {
     private $cliente;
 
-    public function __construct(Cliente $cliente)
+    public function __construct(Client $cliente)
     {
         $this->cliente = $cliente;
     }
@@ -34,9 +34,9 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateClienteFormRequest $request)
+    public function store(StoreUpdateClientFormRequest $request)
     {
-        // Cliente::create($request->all());   
+        // Client::create($request->all());   
         $cliente = $this->cliente->create($request->all());
 
         return response()->json($cliente, 201);
@@ -65,7 +65,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateClienteFormRequest $request, $id)
+    public function update(StoreUpdateClientFormRequest $request, $id)
     {
         $cliente = $this->cliente->find($id);
 

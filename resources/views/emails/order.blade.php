@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<h1>Olá {{ $data['nome'] }}</h1>
+<h1>Olá {{ $data['name'] }}</h1>
 
 <p>Seguem os dados do seu pedido:</p>
 
@@ -18,8 +18,8 @@
 @foreach ($data['products'] as $pastel)
 <tr>
     <td>{{ $pastel->id }}</td>    
-    <td style="padding-right: 20px">{{ $pastel->nome }}</td>
-    <td>@convert($pastel->preco)</td>
+    <td style="padding-right: 20px">{{ $pastel->name }}</td>
+    <td>@convert($pastel->price)</td>
     <td>{{ $pastel['quantidade'] }}</td>
     <td>@convert($pastel->total)</td>
 </tr>

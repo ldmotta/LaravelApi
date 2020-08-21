@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Client extends Model
 {
     protected $fillable = [
-        'nome',
+        'name',
         'email',
         'telefone',
         'nascimento',

@@ -15,8 +15,8 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('cliente_id');
-            $table->bigInteger('pastel_id');
+            $table->bigInteger('client_id');
+            $table->bigInteger('product_id');
             $table->timestamps();
             $table->collation = 'utf8mb4_unicode_ci';
         });

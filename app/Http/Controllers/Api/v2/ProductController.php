@@ -40,11 +40,11 @@ class PastelController extends Controller
     {
         $data = $request->all();
 
-        if($request->hasFile('foto') && $request->file('foto')->isValid())
+        if($request->hasFile('image') && $request->file('image')->isValid())
         {
-            $data['foto'] = $this->pastel->makeImageName($request, 'foto');      
+            $data['image'] = $this->pastel->makeImageName($request, 'image');      
 
-            $uploaded = $request->foto->storeAs($this->upload_path, $data['foto']);
+            $uploaded = $request->image->storeAs($this->upload_path, $data['image']);
 
             if (!$uploaded)
                 return response()->json(['error' => 'Upload fail!'], 500);
@@ -86,19 +86,19 @@ class PastelController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('foto') && $request->file('foto')->isValid())
+        if($request->hasFile('image') && $request->file('image')->isValid())
         {
-            if ($pastel->foto) {
-                $filePath = "{$this->upload_path}/{$pastel->foto}";
+            if ($pastel->image) {
+                $filePath = "{$this->upload_path}/{$pastel->image}";
                 if(Storage::exists($filePath))
                 {
                     Storage::delete($filePath);
                 }
             }
 
-            $data['foto'] = $this->pastel->makeImageName($request, 'foto');      
+            $data['image'] = $this->pastel->makeImageName($request, 'image');      
             
-            $uploaded = $request->foto->storeAs('products', $data['foto']);
+            $uploaded = $request->image->storeAs('products', $data['image']);
 
             if (!$uploaded)
                 return response()->json(['error' => 'Upload fail!'], 500);
@@ -122,8 +122,8 @@ class PastelController extends Controller
         if(!$pastel)
             return response()->json(['error' => 'Not found'], 404);
         
-        if ($pastel->foto) {
-            $filePath = "{$this->upload_path}/{$pastel->foto}";
+        if ($pastel->image) {
+            $filePath = "{$this->upload_path}/{$pastel->image}";
             if(Storage::exists($filePath))
             {
                 Storage::delete($filePath);
