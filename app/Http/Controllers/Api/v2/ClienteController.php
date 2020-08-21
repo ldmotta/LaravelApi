@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Http\Requests\StoreUpdateClienteFormRequest;
+use App\Repositories\ClienteRepository;
 
 class ClienteController extends Controller
 {
-    private $cliente;
+    private $perPage = 10;
 
-    public function __construct(Cliente $cliente)
+    public function __construct(ClienteRepository $clienteRepository)
     {
-        $this->cliente = $cliente;
+        $this->clienteRepository = $clienteRepository;
     }
 
     /**
@@ -23,7 +24,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $customers = $this->cliente->getClients();
+        $customers = $this->clienteRepository->all();
 
         return response()->json($customers);
     }
@@ -36,8 +37,7 @@ class ClienteController extends Controller
      */
     public function store(StoreUpdateClienteFormRequest $request)
     {
-        // Cliente::create($request->all());   
-        $cliente = $this->cliente->create($request->all());
+        $cliente = $this->clienteRepository->create($request->all());
 
         return response()->json($cliente, 201);
     }
@@ -50,9 +50,9 @@ class ClienteController extends Controller
      */
     public function show($id)
     {      
-        $cliente = $this->cliente->find($id);
+        $cliente = $this->clienteRepository->findById($id);
 
-        if(!$cliente)
+        if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
         
         return response()->json($cliente);
@@ -67,9 +67,9 @@ class ClienteController extends Controller
      */
     public function update(StoreUpdateClienteFormRequest $request, $id)
     {
-        $cliente = $this->cliente->find($id);
+        $cliente = $this->clienteRepository->findById($id);
 
-        if(!$cliente)
+        if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
 
         $cliente->update($request->all());
@@ -85,13 +85,33 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = $this->cliente->find($id);
+        $cliente = $this->clienteRepository->findById($id);
 
-        if(!$cliente)
+        if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
         
         $cliente->delete();
 
         return response()->json(['success' => true], 204);
+    }
+
+    /**
+     * Retorna todos os pedidos de um cliente
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function pedidos($id)
+    {
+        $cliente = $this->clienteRepository->findById($id);
+
+        if (!$cliente)
+            return response()->json(['error' => 'Not found'], 404);
+
+        $pedidos = $cliente->pedidos()->paginate($this->perPage);
+
+        return response()->json([
+            'cliente' => $cliente,
+            'pedidos' => $pedidos
+        ]);
     }
 }

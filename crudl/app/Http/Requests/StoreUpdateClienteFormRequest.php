@@ -24,13 +24,13 @@ class StoreUpdateClienteFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => "required:clientes,nome,{$this->segment(3)},id",
-            'email' => "required|unique:clientes,email,{$this->segment(3)},id",
-            'telefone' => "required:clientes,telefone,{$this->segment(3)},id",
-            'nascimento' => "required:clientes,nascimento,{$this->segment(3)},id",
-            'endereco' => "required:clientes,endereco,{$this->segment(3)},id",
-            'bairro' => "required:clientes,bairro,{$this->segment(3)},id",
-            'cep' => "required:clientes,cep,{$this->segment(3)},id",
+            'nome' => "required:customers,nome,{$this->segment(3)},id",
+            'email' => "required|unique:customers,email,{$this->segment(3)},id",
+            'telefone' => "required:customers,telefone,{$this->segment(3)},id",
+            'nascimento' => "required:customers,nascimento,{$this->segment(3)},id",
+            'endereco' => "required:customers,endereco,{$this->segment(3)},id",
+            'bairro' => "required:customers,bairro,{$this->segment(3)},id",
+            'cep' => "required:customers,cep,{$this->segment(3)},id",
         ];
     }
 }

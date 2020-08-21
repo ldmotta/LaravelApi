@@ -15,7 +15,7 @@
     </tr>  
 </thead>
 <tbody>
-@foreach ($data['pasteis'] as $pastel)
+@foreach ($data['products'] as $pastel)
 <tr>
     <td>{{ $pastel->id }}</td>    
     <td style="padding-right: 20px">{{ $pastel->nome }}</td>

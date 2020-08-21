@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pastel;
 use App\Http\Requests\StoreUpdatePastelFormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PastelController extends Controller
 {
     private $pastel;
+    private $upload_path = 'products';
+
     public function __construct(Pastel $pastel)
     {
         $this->pastel = $pastel;
@@ -35,7 +38,18 @@ class PastelController extends Controller
      */
     public function store(StoreUpdatePastelFormRequest $request)
     {
-        $pastel = $this->pastel->create($request->all());
+        $data = $request->all();
+
+        if($request->hasFile('foto') && $request->file('foto')->isValid())
+        {
+            $data['foto'] = $this->pastel->makeImageName($request, 'foto');      
+
+            $uploaded = $request->foto->storeAs($this->upload_path, $data['foto']);
+
+            if (!$uploaded)
+                return response()->json(['error' => 'Upload fail!'], 500);
+        }
+        $pastel = $this->pastel->create($data);
 
         return response()->json($pastel, 201);
     }
@@ -70,7 +84,27 @@ class PastelController extends Controller
         if(!$pastel)
             return response()->json(['error' => 'Not found'], 404);
 
-        $pastel->update($request->all());
+        $data = $request->all();
+
+        if($request->hasFile('foto') && $request->file('foto')->isValid())
+        {
+            if ($pastel->foto) {
+                $filePath = "{$this->upload_path}/{$pastel->foto}";
+                if(Storage::exists($filePath))
+                {
+                    Storage::delete($filePath);
+                }
+            }
+
+            $data['foto'] = $this->pastel->makeImageName($request, 'foto');      
+            
+            $uploaded = $request->foto->storeAs('products', $data['foto']);
+
+            if (!$uploaded)
+                return response()->json(['error' => 'Upload fail!'], 500);
+        }
+
+        $pastel->update($data);
         
         return response()->json($pastel);
     }
@@ -88,6 +122,14 @@ class PastelController extends Controller
         if(!$pastel)
             return response()->json(['error' => 'Not found'], 404);
         
+        if ($pastel->foto) {
+            $filePath = "{$this->upload_path}/{$pastel->foto}";
+            if(Storage::exists($filePath))
+            {
+                Storage::delete($filePath);
+            }
+        }      
+              
         $pastel->delete();
 
         return response()->json(['success' => true], 204);

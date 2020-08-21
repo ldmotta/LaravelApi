@@ -10,7 +10,7 @@ class Pastel extends Model
 {
     use SoftDeletes;
     
-    protected $table = 'pasteis';
+    protected $table = 'products';
     protected $dates = ['deleted_at'];
     protected $fillable = ['nome', 'preco', 'foto', 'deleted_at'];
 
@@ -36,9 +36,9 @@ class Pastel extends Model
     }
     
     /**
-     * Retorna os pasteis com base no array de id's de pastel
+     * Retorna os products com base no array de id's de pastel
      */
-    public function pasteis($pastel_ids)
+    public function products($pastel_ids)
     {
         return $this->select('id', 'nome', 'preco', 'foto')
             ->whereIn('id', $pastel_ids)

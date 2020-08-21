@@ -24,8 +24,8 @@ class StoreUpdateClienteFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => "required:clientes,nome,{$this->segment(3)},id",
-            'email' => "required|email|unique:clientes,email,{$this->segment(3)},id", //valid email 
+            'nome' => "required:customers,nome,{$this->segment(3)},id",
+            'email' => "required|email|unique:customers,email,{$this->segment(3)},id", //valid email 
             'telefone' => "required|regex:/^(\(?\d{2}\)?\s?)?(\d{4,5}\-?\d{4})$/",
             'nascimento' => "required|date",
             'endereco' => "required",

@@ -13,7 +13,7 @@ class CreatePasteisTable extends Migration
      */
     public function up()
     {
-        Schema::create('pasteis', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->unique();
             $table->decimal('preco', 8, 2);
@@ -30,6 +30,6 @@ class CreatePasteisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pasteis');
+        Schema::dropIfExists('products');
     }
 }

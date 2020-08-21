@@ -24,9 +24,9 @@ class StoreUpdatePedidoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'cliente_id' => "required|exists:clientes,id",
+            'cliente_id' => "required|exists:customers,id",
             'pastel_id' => "required",
         ];
-        // 'pastel_id' => "required|exists:pasteis,id",
+        // 'pastel_id' => "required|exists:products,id",
     }
 }
