@@ -30,7 +30,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/1/pedidos",
+					"raw": "{{base_url}}/api/v1/customers/1/order",
 					"host": [
 						"{{base_url}}"
 					],
@@ -39,10 +39,10 @@
 						"v1",
 						"customers",
 						"1",
-						"pedidos"
+						"order"
 					]
 				},
-				"description": "Lista todos os pedidos de um determinado cliente"
+				"description": "Lista todos os order de um determinado cliente"
 			},
 			"response": []
 		},
@@ -71,14 +71,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/pedidos",
+					"raw": "{{base_url}}/api/v1/order",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"pedidos"
+						"order"
 					]
 				}
 			},
@@ -216,14 +216,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/pedidos?cliente_id=2&pastel_id=[16,16,16, 18, 18, 17]",
+					"raw": "{{base_url}}/api/v1/order?cliente_id=2&pastel_id=[16,16,16, 18, 18, 17]",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"pedidos"
+						"order"
 					],
 					"query": [
 						{
@@ -285,14 +285,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/pedidos/1",
+					"raw": "{{base_url}}/api/v1/order/1",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"pedidos",
+						"order",
 						"1"
 					]
 				}
@@ -436,14 +436,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/pedidos?cliente_id=1&pastel_id=[23,22]",
+					"raw": "{{base_url}}/api/v1/order?cliente_id=1&pastel_id=[23,22]",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"pedidos"
+						"order"
 					],
 					"query": [
 						{

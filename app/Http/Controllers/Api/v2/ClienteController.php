@@ -96,22 +96,22 @@ class ClienteController extends Controller
     }
 
     /**
-     * Retorna todos os pedidos de um cliente
+     * Retorna todos os order de um cliente
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function pedidos($id)
+    public function order($id)
     {
         $cliente = $this->clienteRepository->findById($id);
 
         if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
 
-        $pedidos = $cliente->pedidos()->paginate($this->perPage);
+        $order = $cliente->order()->paginate($this->perPage);
 
         return response()->json([
             'cliente' => $cliente,
-            'pedidos' => $pedidos
+            'order' => $order
         ]);
     }
 }

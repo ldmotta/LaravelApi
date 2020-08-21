@@ -15,9 +15,9 @@ class CreatePasteisTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome')->unique();
-            $table->decimal('preco', 10, 2);
-            $table->string('foto', 255)->nullable();
+            $table->string('name')->unique();
+            $table->decimal('price', 10, 2);
+            $table->string('image', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->collation = 'utf8mb4_unicode_ci';

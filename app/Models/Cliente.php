@@ -33,7 +33,7 @@ class Cliente extends Model
             ->get();
     }
 
-    public function pedidos()
+    public function order()
     {
         return $this->hasMany(Pedido::class);
     }

@@ -22,9 +22,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = $this->pedido->getPedidos();
+        $order = $this->pedido->getPedidos();
 
-        return response()->json($pedidos);
+        return response()->json($order);
     }
 
     /**
