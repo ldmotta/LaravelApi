@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pastel;
-use App\Http\Requests\StoreUpdatePastelFormRequest;
+use App\Models\Product;
+use App\Http\Requests\StoreUpdateProductFormRequest;
 
-class PastelController extends Controller
+class ProductController extends Controller
 {
     private $pastel;
-    public function __construct(Pastel $pastel)
+    public function __construct(Product $pastel)
     {
         $this->pastel = $pastel;
     }
@@ -22,7 +22,7 @@ class PastelController extends Controller
      */
     public function index()
     {
-        $products = $this->pastel->getPasteis();
+        $products = $this->pastel->getProducts();
 
         return response()->json($products);
     }
@@ -33,7 +33,7 @@ class PastelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdatePastelFormRequest $request)
+    public function store(StoreUpdateProductFormRequest $request)
     {
         $pastel = $this->pastel->create($request->all());
 
@@ -63,7 +63,7 @@ class PastelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdatePastelFormRequest $request, $id)
+    public function update(StoreUpdateProductFormRequest $request, $id)
     {
         $pastel = $this->pastel->find($id);
 

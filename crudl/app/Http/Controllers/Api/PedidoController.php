@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pedido;
-use App\Http\Requests\StoreUpdatePedidoFormRequest;
+use App\Models\Order;
+use App\Http\Requests\StoreUpdateOrderFormRequest;
 
-class PedidoController extends Controller
+class OrderController extends Controller
 {
     private $pedido;
-    public function __construct(Pedido $pedido)
+    public function __construct(Order $pedido)
     {
         $this->pedido = $pedido;
     }
@@ -22,7 +22,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $order = $this->pedido->getPedidos();
+        $order = $this->pedido->getOrders();
 
         return response()->json($order);
     }
@@ -33,7 +33,7 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdatePedidoFormRequest $request)
+    public function store(StoreUpdateOrderFormRequest $request)
     {
         $pedido = $this->pedido->create($request->all());
 
@@ -63,7 +63,7 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdatePedidoFormRequest $request, $id)
+    public function update(StoreUpdateOrderFormRequest $request, $id)
     {
         $pedido = $this->pedido->find($id);
 

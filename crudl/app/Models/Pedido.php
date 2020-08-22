@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Order extends Model
 {
     protected $fillable = [
         'client_id',
         'product_id'];
 
-    public function getPedidos()
+    public function getOrders()
     {
         return $this->get();
     }

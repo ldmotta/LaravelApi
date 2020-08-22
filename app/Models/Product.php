@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Pastel extends Model
+class Product extends Model
 {
     use SoftDeletes;
     
-    protected $table = 'products';
     protected $dates = ['deleted_at'];
     protected $fillable = ['name', 'price', 'image', 'deleted_at'];
 
-    public function getPasteis()
+    public function getProducts()
     {
         return $this->get();
     }

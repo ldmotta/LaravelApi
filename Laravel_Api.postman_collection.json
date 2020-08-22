@@ -11,13 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers",
+					"raw": "{{base_url}}/api/v2/customers",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers"
 					]
 				}
@@ -30,13 +30,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/1/order",
+					"raw": "{{base_url}}/api/v2/customers/1/order",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers",
 						"1",
 						"order"
@@ -47,18 +47,18 @@
 			"response": []
 		},
 		{
-			"name": "Pastel-List",
+			"name": "Product-List",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/products",
+					"raw": "{{base_url}}/api/v2/products",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"products"
 					]
 				}
@@ -66,18 +66,18 @@
 			"response": []
 		},
 		{
-			"name": "Pedido-List",
+			"name": "Order-List",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order",
+					"raw": "{{base_url}}/api/v2/order",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"order"
 					]
 				}
@@ -101,13 +101,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers?name=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v2/customers?name=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers"
 					],
 					"query": [
@@ -149,7 +149,7 @@
 			"response": []
 		},
 		{
-			"name": "Pastel-Create",
+			"name": "Product-Create",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -170,7 +170,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Pastel Teste 7",
+							"value": "Product Teste 7",
 							"type": "text"
 						},
 						{
@@ -186,13 +186,13 @@
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/api/v1/products",
+					"raw": "{{base_url}}/api/v2/products",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"products"
 					]
 				}
@@ -200,7 +200,7 @@
 			"response": []
 		},
 		{
-			"name": "Pedido-Criate",
+			"name": "Order-Criate",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -216,13 +216,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order?client_id=2&product_id=[16,16,16, 18, 18, 17]",
+					"raw": "{{base_url}}/api/v2/order?client_id=2&product_id=[16,16,16, 18, 18, 17]",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"order"
 					],
 					"query": [
@@ -245,13 +245,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/1",
+					"raw": "{{base_url}}/api/v2/customers/1",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers",
 						"1"
 					]
@@ -260,18 +260,18 @@
 			"response": []
 		},
 		{
-			"name": "Pastel-Show",
+			"name": "Product-Show",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/products/16",
+					"raw": "{{base_url}}/api/v2/products/16",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"products",
 						"16"
 					]
@@ -280,18 +280,18 @@
 			"response": []
 		},
 		{
-			"name": "Pedido-Show",
+			"name": "Order-Show",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order/1",
+					"raw": "{{base_url}}/api/v2/order/1",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"order",
 						"1"
 					]
@@ -316,13 +316,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/1?name=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v2/customers/1?name=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers",
 						"1"
 					],
@@ -365,7 +365,7 @@
 			"response": []
 		},
 		{
-			"name": "Pastel-Update",
+			"name": "Product-Update",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -391,20 +391,20 @@
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/api/v1/products/22?name=Pastel de Camarão&price=2.50&_method=PUT",
+					"raw": "{{base_url}}/api/v2/products/22?name=Product de Camarão&price=2.50&_method=PUT",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"products",
 						"22"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "Pastel de Camarão"
+							"value": "Product de Camarão"
 						},
 						{
 							"key": "price",
@@ -420,7 +420,7 @@
 			"response": []
 		},
 		{
-			"name": "Pedido-Update",
+			"name": "Order-Update",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -436,13 +436,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/order?client_id=1&product_id=[23,22]",
+					"raw": "{{base_url}}/api/v2/order?client_id=1&product_id=[23,22]",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"order"
 					],
 					"query": [
@@ -476,13 +476,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/6",
+					"raw": "{{base_url}}/api/v2/customers/6",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers",
 						"6"
 					]
@@ -491,7 +491,7 @@
 			"response": []
 		},
 		{
-			"name": "Pastel-Delete",
+			"name": "Product-Delete",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -507,13 +507,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/products/7",
+					"raw": "{{base_url}}/api/v2/products/7",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"products",
 						"7"
 					]
@@ -522,7 +522,7 @@
 			"response": []
 		},
 		{
-			"name": "Pedido-Delete",
+			"name": "Order-Delete",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -538,13 +538,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v1/customers/6",
+					"raw": "{{base_url}}/api/v2/customers/6",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"customers",
 						"6"
 					]

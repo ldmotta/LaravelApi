@@ -3,10 +3,10 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model;
-use App\Models\Pastel;
+use App\Models\Product;
 use Faker\Generator as Faker;
 
-$factory->define(Pastel::class, function (Faker $faker) {
+$factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->word,
         'price' => $faker->randomFloat(2, 0, 50),

@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pastel extends Model
+class Product extends Model
 {
     protected $fillable = [
         'name',
         'price',
         'image'];
 
-    public function getPasteis()
+    public function getProducts()
     {
         return $this->get();
     }

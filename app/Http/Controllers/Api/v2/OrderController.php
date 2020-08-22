@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pedido;
-use App\Models\Pastel;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Client;
-use App\Http\Requests\StoreUpdatePedidoFormRequest;
+use App\Http\Requests\StoreUpdateOrderFormRequest;
 use App\Mail\SendMailUser;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 
-class PedidoController extends Controller
+class OrderController extends Controller
 {
     private $pedido;
     private $pastel;
     private $cliente;
-    public function __construct(Pedido $pedido, Pastel $pastel, Client $cliente)
+    public function __construct(Order $pedido, Product $pastel, Client $cliente)
     {
         $this->pedido = $pedido;
         $this->pastel = $pastel;
@@ -31,7 +31,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $order = $this->pedido->getPedidos();
+        $order = $this->pedido->getOrders();
 
         return response()->json($order);
     }
@@ -42,7 +42,7 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdatePedidoFormRequest $request)
+    public function store(StoreUpdateOrderFormRequest $request)
     {
         $data = $request->all();
         
@@ -113,7 +113,7 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdatePedidoFormRequest $request, $id)
+    public function update(StoreUpdateOrderFormRequest $request, $id)
     {
         $pedido = $this->pedido->find($id);
 

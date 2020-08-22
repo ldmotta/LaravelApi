@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pedido extends Model
+class Order extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -14,7 +14,7 @@ class Pedido extends Model
         'product_id',
         'deleted_at'];
 
-    public function getPedidos()
+    public function getOrders()
     {
         return $this->get();
     }

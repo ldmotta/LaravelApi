@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasteisTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreatePasteisTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->decimal('price', 10, 2);
-            $table->string('image', 255)->nullable();
+            $table->bigInteger('client_id')->unsigned();
+                $table->foreign('client_id')
+                    ->references('id')
+                    ->on('customers')
+                    ->onDelete('cascade');
+            $table->string('product_id');
             $table->timestamps();
             $table->softDeletes();
             $table->collation = 'utf8mb4_unicode_ci';
@@ -31,6 +34,6 @@ class CreatePasteisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('order');
     }
 }

@@ -35,7 +35,7 @@ class Client extends Model
 
     public function order()
     {
-        return $this->hasMany(Pedido::class);
+        return $this->hasMany(Order::class);
     }
 
     public function format()
