@@ -12,9 +12,9 @@ class CustomerController extends Controller
 {
     private $perPage = 10;
 
-    public function __construct(CustomerRepository $clienteRepository)
+    public function __construct(CustomerRepository $customerRepository)
     {
-        $this->clienteRepository = $clienteRepository;
+        $this->customerRepository = $customerRepository;
     }
 
     /**
@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = $this->clienteRepository->all();
+        $customers = $this->customerRepository->all();
 
         return response()->json($customers);
     }
@@ -37,7 +37,7 @@ class CustomerController extends Controller
      */
     public function store(StoreUpdateCustomerFormRequest $request)
     {
-        $cliente = $this->clienteRepository->create($request->all());
+        $cliente = $this->customerRepository->create($request->all());
 
         return response()->json($cliente, 201);
     }
@@ -50,7 +50,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {      
-        $cliente = $this->clienteRepository->findById($id);
+        $cliente = $this->customerRepository->findById($id);
 
         if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
@@ -67,7 +67,7 @@ class CustomerController extends Controller
      */
     public function update(StoreUpdateCustomerFormRequest $request, $id)
     {
-        $cliente = $this->clienteRepository->findById($id);
+        $cliente = $this->customerRepository->findById($id);
 
         if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
@@ -85,7 +85,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = $this->clienteRepository->findById($id);
+        $cliente = $this->customerRepository->findById($id);
 
         if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);
@@ -102,7 +102,7 @@ class CustomerController extends Controller
      */
     public function order($id)
     {
-        $cliente = $this->clienteRepository->findById($id);
+        $cliente = $this->customerRepository->findById($id);
 
         if (!$cliente)
             return response()->json(['error' => 'Not found'], 404);

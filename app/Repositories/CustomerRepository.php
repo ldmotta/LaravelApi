@@ -5,29 +5,48 @@ use App\Models\Customer;
 
 class CustomerRepository
 {
+    // customer property on class instance
+    protected $customer;
+
+    // Constructor to bind customer to repo
+    public function __construct(Customer $customer)
+    {
+        $this->customer = $customer;
+    }
+    
+    // Get all instances of model
     public function all()
     {
-        return Customer::orderBy('name')
+        return $this->customer->orderBy('name')
             ->get()
             ->map->format();
     }
 
     public function findById($id)
     {
-        return Customer::where('id', $id)
-            ->firstOrFail()
-            ->format();
+        return $this->customer->find($id);
     }
 
     public function findByName($name)
     {
-        return Customer::where('name', $name)
+        return $this->customer->where('name', $name)
             ->firstOrFail()
             ->format();
     }
 
-    public function create($requestData)
+    public function create($data)
     {
-        return Customer::create($requestData);
+        return $this->customer->create($data);
+    }
+
+    public function update($data)
+    {
+        $record = $this->customer->find($data->id);
+        return $record->update($data);
+    }
+
+    public function delete($id)
+    {
+        $this->customer->destroy($id);
     }
 }
