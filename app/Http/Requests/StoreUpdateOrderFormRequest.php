@@ -26,6 +26,7 @@ class StoreUpdateOrderFormRequest extends FormRequest
         return [
             'client_id' => "required|exists:customers,id",
             'product_id' => "required",
+            'quantity' => "required|int"
         ];
         // 'product_id' => "required|exists:products,id",
     }

@@ -4,7 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Client extends Model
+class Customer extends Model
 {
     use SoftDeletes;
 
@@ -13,21 +13,21 @@ class Client extends Model
     protected $fillable = [
         'name',
         'email',
-        'telefone',
-        'nascimento',
-        'endereco',
-        'bairro',
-        'complemento',
-        'cep',
+        'phone',
+        'birth_date',
+        'address',
+        'district',
+        'complement',
+        'zip_code',
         'deleted_at'
     ];
 
-    public function getClients()
+    public function getCustomers()
     {
         return $this->get();
     }
 
-    public function getClientsById($id)
+    public function getCustomersById($id)
     {
         return $this->where('id', "{$id}")
             ->get();
@@ -44,12 +44,12 @@ class Client extends Model
             'id' => $this->id,
             'name' =>$this->name,
             'email' => $this->email,
-            'telefone' => $this->telefone,
-            'nascimento' => $this->nascimento,
-            'endereco' => $this->endereco,
-            'bairro' => $this->bairro,
-            'complemento' => $this->complemento,
-            'cep' => $this->cep,
+            'phone' => $this->phone,
+            'birth_date' => $this->birth_date,
+            'address' => $this->address,
+            'district' => $this->district,
+            'complement' => $this->complement,
+            'zip_code' => $this->zip_code,
             'created_at' => $this->created_at,    
             'updated_at' => $this->updated_at    
         ];

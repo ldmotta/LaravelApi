@@ -101,7 +101,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v2/customers?name=Luciano Mota&email=ldmotta@gmail.com&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v2/customers?name=Luciano Mota&email=ldmotta@gmail.com&phone=11980482957&birth_date=1974-08-02&address=Rua Soares Passos, 368&complement=Casa 1&district=Jd Itacolomi&zip_code=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -120,27 +120,27 @@
 							"value": "ldmotta@gmail.com"
 						},
 						{
-							"key": "telefone",
+							"key": "phone",
 							"value": "11980482957"
 						},
 						{
-							"key": "nascimento",
+							"key": "birth_date",
 							"value": "1974-08-02"
 						},
 						{
-							"key": "endereco",
+							"key": "address",
 							"value": "Rua Soares Passos, 368"
 						},
 						{
-							"key": "complemento",
+							"key": "complement",
 							"value": "Casa 1"
 						},
 						{
-							"key": "bairro",
+							"key": "district",
 							"value": "Jd Itacolomi"
 						},
 						{
-							"key": "cep",
+							"key": "zip_code",
 							"value": "04386070"
 						}
 					]
@@ -316,7 +316,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/api/v2/customers/1?name=Luciano Mota&email=ldmotta@gmail.com.br&telefone=11980482957&nascimento=1974-08-02&endereco=Rua Soares Passos, 368&complemento=Casa 1&bairro=Jd Itacolomi&cep=04386070",
+					"raw": "{{base_url}}/api/v2/customers/1?name=Luciano Mota&email=ldmotta@gmail.com.br&phone=11980482957&birth_date=1974-08-02&address=Rua Soares Passos, 368&complement=Casa 1&district=Jd Itacolomi&zip_code=04386070",
 					"host": [
 						"{{base_url}}"
 					],
@@ -336,27 +336,27 @@
 							"value": "ldmotta@gmail.com.br"
 						},
 						{
-							"key": "telefone",
+							"key": "phone",
 							"value": "11980482957"
 						},
 						{
-							"key": "nascimento",
+							"key": "birth_date",
 							"value": "1974-08-02"
 						},
 						{
-							"key": "endereco",
+							"key": "address",
 							"value": "Rua Soares Passos, 368"
 						},
 						{
-							"key": "complemento",
+							"key": "complement",
 							"value": "Casa 1"
 						},
 						{
-							"key": "bairro",
+							"key": "district",
 							"value": "Jd Itacolomi"
 						},
 						{
-							"key": "cep",
+							"key": "zip_code",
 							"value": "04386070"
 						}
 					]

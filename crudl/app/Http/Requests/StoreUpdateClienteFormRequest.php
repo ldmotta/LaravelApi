@@ -26,11 +26,11 @@ class StoreUpdateClientFormRequest extends FormRequest
         return [
             'name' => "required:customers,name,{$this->segment(3)},id",
             'email' => "required|unique:customers,email,{$this->segment(3)},id",
-            'telefone' => "required:customers,telefone,{$this->segment(3)},id",
-            'nascimento' => "required:customers,nascimento,{$this->segment(3)},id",
-            'endereco' => "required:customers,endereco,{$this->segment(3)},id",
-            'bairro' => "required:customers,bairro,{$this->segment(3)},id",
-            'cep' => "required:customers,cep,{$this->segment(3)},id",
+            'phone' => "required:customers,phone,{$this->segment(3)},id",
+            'birth_date' => "required:customers,birth_date,{$this->segment(3)},id",
+            'address' => "required:customers,address,{$this->segment(3)},id",
+            'district' => "required:customers,district,{$this->segment(3)},id",
+            'zip_code' => "required:customers,zip_code,{$this->segment(3)},id",
         ];
     }
 }

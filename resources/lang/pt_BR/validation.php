@@ -166,7 +166,7 @@ return [
         'name'                  => 'name',
         'password_confirmation' => 'confirmação da senha',
         'password'              => 'senha',
-        'phone'                 => 'telefone',
+        'phone'                 => 'phone',
         'second'                => 'segundo',
         'sex'                   => 'sexo',
         'state'                 => 'estado',

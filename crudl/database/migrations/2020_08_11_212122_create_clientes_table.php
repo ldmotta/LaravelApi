@@ -17,12 +17,12 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('telefone');
-            $table->date('nascimento', 0);
-            $table->string('endereco');
-            $table->string('complemento');
-            $table->string('bairro');
-            $table->string('cep');
+            $table->string('phone');
+            $table->date('birth_date', 0);
+            $table->string('address');
+            $table->string('complement');
+            $table->string('district');
+            $table->string('zip_code');
             $table->timestamps();
             $table->collation = 'utf8mb4_unicode_ci';
         });

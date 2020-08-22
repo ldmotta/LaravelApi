@@ -1,33 +1,33 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\Client;
+use App\Models\Customer;
 
-class ClientRepository
+class CustomerRepository
 {
     public function all()
     {
-        return Client::orderBy('name')
+        return Customer::orderBy('name')
             ->get()
             ->map->format();
     }
 
     public function findById($id)
     {
-        return Client::where('id', $id)
+        return Customer::where('id', $id)
             ->firstOrFail()
             ->format();
     }
 
     public function findByName($name)
     {
-        return Client::where('name', $name)
+        return Customer::where('name', $name)
             ->firstOrFail()
             ->format();
     }
 
     public function create($requestData)
     {
-        return Client::create($requestData);
+        return Customer::create($requestData);
     }
 }

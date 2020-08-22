@@ -9,12 +9,12 @@ class Client extends Model
     protected $fillable = [
         'name',
         'email',
-        'telefone',
-        'nascimento',
-        'endereco',
-        'bairro',
-        'complemento',
-        'cep'];
+        'phone',
+        'birth_date',
+        'address',
+        'district',
+        'complement',
+        'zip_code'];
 
     public function getClients()
     {

@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Http\Requests\StoreUpdateClientFormRequest;
-use App\Repositories\ClientRepository;
+use App\Models\Customer;
+use App\Http\Requests\StoreUpdateCustomerFormRequest;
+use App\Repositories\CustomerRepository;
 
-class ClientController extends Controller
+class CustomerController extends Controller
 {
     private $perPage = 10;
 
-    public function __construct(ClientRepository $clienteRepository)
+    public function __construct(CustomerRepository $clienteRepository)
     {
         $this->clienteRepository = $clienteRepository;
     }
@@ -35,7 +35,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateClientFormRequest $request)
+    public function store(StoreUpdateCustomerFormRequest $request)
     {
         $cliente = $this->clienteRepository->create($request->all());
 
@@ -65,7 +65,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateClientFormRequest $request, $id)
+    public function update(StoreUpdateCustomerFormRequest $request, $id)
     {
         $cliente = $this->clienteRepository->findById($id);
 

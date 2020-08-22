@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\Client;
+use App\Models\Customer;
 use App\Http\Requests\StoreUpdateOrderFormRequest;
 use App\Mail\SendMailUser;
 use Illuminate\Support\Arr;
@@ -17,7 +17,7 @@ class OrderController extends Controller
     private $pedido;
     private $pastel;
     private $cliente;
-    public function __construct(Order $pedido, Product $pastel, Client $cliente)
+    public function __construct(Order $pedido, Product $pastel, Customer $cliente)
     {
         $this->pedido = $pedido;
         $this->pastel = $pastel;

@@ -21,7 +21,7 @@ class Order extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Customer::class);
     }
 
 }
