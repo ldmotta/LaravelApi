@@ -1,20 +1,20 @@
 <?php
-
 namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Http\Requests\StoreUpdateCustomerFormRequest;
-use App\Repositories\CustomerRepository;
+use App\Repositories\Repository;
 
 class CustomerController extends Controller
 {
     private $perPage = 10;
+    protected $model;
 
-    public function __construct(CustomerRepository $customerRepository)
+    public function __construct(Customer $customer)
     {
-        $this->customerRepository = $customerRepository;
+        $this->model = new Repository($customer);
     }
 
     /**
@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = $this->customerRepository->all();
+        $customers = $this->model->all();
 
         return response()->json($customers);
     }
@@ -37,9 +37,9 @@ class CustomerController extends Controller
      */
     public function store(StoreUpdateCustomerFormRequest $request)
     {
-        $cliente = $this->customerRepository->create($request->all());
+        $customer = $this->model->create($request->all());
 
-        return response()->json($cliente, 201);
+        return response()->json($customer, 201);
     }
 
     /**
@@ -50,12 +50,12 @@ class CustomerController extends Controller
      */
     public function show($id)
     {      
-        $cliente = $this->customerRepository->findById($id);
+        $customer = $this->model->find($id);
 
-        if (!$cliente)
+        if (!$customer)
             return response()->json(['error' => 'Not found'], 404);
         
-        return response()->json($cliente);
+        return response()->json($customer);
     }
 
     /**
@@ -67,14 +67,15 @@ class CustomerController extends Controller
      */
     public function update(StoreUpdateCustomerFormRequest $request, $id)
     {
-        $cliente = $this->customerRepository->findById($id);
+        $customer = $this->model->find($id);
 
-        if (!$cliente)
+        if (!$customer) {
             return response()->json(['error' => 'Not found'], 404);
+        }
 
-        $cliente->update($request->all());
+        $this->model->update($request->all());
         
-        return response()->json($cliente);
+        return response()->json($customer);
     }
 
     /**
@@ -85,32 +86,32 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = $this->customerRepository->findById($id);
+        $customer = $this->model->find($id);
 
-        if (!$cliente)
+        if (!$customer)
             return response()->json(['error' => 'Not found'], 404);
         
-        $cliente->delete();
+        $this->model->delete($id);
 
         return response()->json(['success' => true], 204);
     }
 
     /**
-     * Retorna todos os order de um cliente
+     * Retorna todos os pedidos de um customer
      * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function order($id)
     {
-        $cliente = $this->customerRepository->findById($id);
+        $customer = $this->model->find($id);
 
-        if (!$cliente)
+        if (!$customer)
             return response()->json(['error' => 'Not found'], 404);
 
-        $order = $cliente->order()->paginate($this->perPage);
+        $order = $customer->order()->paginate($this->perPage);
 
         return response()->json([
-            'cliente' => $cliente,
+            'customer' => $customer,
             'order' => $order
         ]);
     }

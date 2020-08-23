@@ -6,16 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\StoreUpdateProductFormRequest;
+use App\Repositories\ImageRepository;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\Repository;
 
 class ProductController extends Controller
 {
-    private $pastel;
-    private $upload_path = 'products';
-
-    public function __construct(Product $pastel)
+    private $product;
+    protected $model;
+    protected $image;
+    
+    public function __construct(Product $product)
     {
-        $this->pastel = $pastel;
+        $this->model = new Repository($product);
+        $this->image = new ImageRepository($product);
     }
 
     /**
@@ -25,7 +29,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->pastel->getProducts();
+        $products = $this->model->all();
 
         return response()->json($products);
     }
@@ -40,18 +44,17 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->file('image')->isValid())
-        {
-            $data['image'] = $this->pastel->makeImageName($request, 'image');      
+        $uploadedImage = $this->image->doUpload($request);
 
-            $uploaded = $request->image->storeAs($this->upload_path, $data['image']);
+        if (!$uploadedImage) {            
+            return response()->json(['error' => 'Image upload fail!'], 500);
+        }        
 
-            if (!$uploaded)
-                return response()->json(['error' => 'Upload fail!'], 500);
-        }
-        $pastel = $this->pastel->create($data);
+        $data['image'] = $uploadedImage;
 
-        return response()->json($pastel, 201);
+        $product = $this->model->create($data);
+
+        return response()->json($product, 201);
     }
 
     /**
@@ -62,12 +65,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {      
-        $pastel = $this->pastel->find($id);
+        $product = $this->model->find($id);
 
-        if(!$pastel)
+        if (!$product) {
             return response()->json(['error' => 'Not found'], 404);
-        
-        return response()->json($pastel);
+        }
+
+        return response()->json($product);
     }
 
     /**
@@ -79,34 +83,25 @@ class ProductController extends Controller
      */
     public function update(StoreUpdateProductFormRequest $request, $id)
     {
-        $pastel = $this->pastel->find($id);
+        $product = $this->model->find($id);
 
-        if(!$pastel)
+        if (!$product) {
             return response()->json(['error' => 'Not found'], 404);
+        }
 
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->file('image')->isValid())
-        {
-            if ($pastel->image) {
-                $filePath = "{$this->upload_path}/{$pastel->image}";
-                if(Storage::exists($filePath))
-                {
-                    Storage::delete($filePath);
-                }
-            }
+        $uploadedImage = $this->image->doUpload($request);
 
-            $data['image'] = $this->pastel->makeImageName($request, 'image');      
-            
-            $uploaded = $request->image->storeAs('products', $data['image']);
-
-            if (!$uploaded)
-                return response()->json(['error' => 'Upload fail!'], 500);
+        if (!$uploadedImage) {            
+            return response()->json(['error' => 'Image upload fail!'], 500);
         }
 
-        $pastel->update($data);
+        $data['image'] = $uploadedImage;
         
-        return response()->json($pastel);
+        $this->model->update($data);
+        
+        return response()->json($product);
     }
 
     /**
@@ -117,20 +112,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $pastel = $this->pastel->find($id);
+        $product = $this->model->find($id);
 
-        if(!$pastel)
+        if (!$product) {
             return response()->json(['error' => 'Not found'], 404);
-        
-        if ($pastel->image) {
-            $filePath = "{$this->upload_path}/{$pastel->image}";
-            if(Storage::exists($filePath))
-            {
-                Storage::delete($filePath);
-            }
-        }      
+        }
               
-        $pastel->delete();
+        $this->model->delete($product);
 
         return response()->json(['success' => true], 204);
     }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -16,22 +15,6 @@ class Product extends Model
     public function getProducts()
     {
         return $this->get();
-    }
-    
-    /**
-     * Cria um name para fazer upload da imagem
-     * @param \Illuminate\Http\Request  $request
-     * @param string $imageField
-     * @param bool $unique
-     * @return string
-     */
-    public function makeImageName($request, $imageField, $unique = false)
-    {
-        $name = Str::kebab($request->name);       
-        if($unique)
-            $name = md5($request->name . time());
-        $ext = $request->file($imageField)->extension();
-        return "{$name}.{$ext}"; 
     }
     
     /**
