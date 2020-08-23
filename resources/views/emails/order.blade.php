@@ -15,9 +15,9 @@
     <tbody>
 
         <tr>
-            <td>{{ $data->id }}</td>    
-            <td style="padding-right: 20px">{{ $data->name }}</td>
-            <td>@convert($data->price)</td>
+            <td>{{ $data['product']->id }}</td>    
+            <td>{{ $data['product']->name }}</td>
+            <td>@convert($data['product']->price)</td>
         </tr>
 
     </tbody>

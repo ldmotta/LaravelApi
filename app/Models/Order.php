@@ -10,7 +10,7 @@ class Order extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'client_id',
+        'customer_id',
         'product_id',
         'deleted_at'];
 
@@ -19,7 +19,7 @@ class Order extends Model
         return $this->get();
     }
 
-    public function cliente()
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }

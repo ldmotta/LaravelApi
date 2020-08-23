@@ -23,7 +23,7 @@ class OrderController extends Controller
     {
         $this->model = new Repository($order);
         $this->pastel = $product;
-        $this->cliente = $customer;
+        $this->customer = $customer;
     }
 
     /**
@@ -60,10 +60,15 @@ class OrderController extends Controller
             return response()->json(['error' => "Product not found!"]);
         }
        
-        $order = $this->pedido->create($data);
+        $order = $this->model->create($data);
+
+        $order_data = [
+            'name' => $customer->name,
+            'product' => $product
+        ];
 
         if ($order) {
-            Mail::to($customer->email)->send(new SendMailUser($product));
+            Mail::to($customer->email)->send(new SendMailUser($order_data));
         }
 
         return response()->json(['success' => $order], 201);
