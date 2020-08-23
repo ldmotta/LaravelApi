@@ -23,6 +23,7 @@ class ImageRepository implements ImageRepositoryInterface
     {
         if ($request->hasFile($this->imageField) && $request->file($this->imageField)->isValid()) {
             $filePath = "{$this->uploadFolder}/{$request->image}";
+
             if (Storage::exists($filePath)) {
                 Storage::delete($filePath);
             }

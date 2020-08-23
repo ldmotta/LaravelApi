@@ -73,7 +73,7 @@ class CustomerController extends Controller
             return response()->json(['error' => 'Not found'], 404);
         }
 
-        $this->model->update($request->all());
+        $customer = $this->model->update($request->all(), $id);
         
         return response()->json($customer);
     }
@@ -88,10 +88,11 @@ class CustomerController extends Controller
     {
         $customer = $this->model->find($id);
 
-        if (!$customer)
+        if (!$customer) {
             return response()->json(['error' => 'Not found'], 404);
+        }
         
-        $this->model->delete($id);
+        $this->model->delete($customer);
 
         return response()->json(['success' => true], 204);
     }

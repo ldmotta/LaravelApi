@@ -25,7 +25,7 @@ class StoreUpdateProductFormRequest extends FormRequest
     {
         // 'name' => "required|unique:products,name,{$this->segment(3)},id",
         return [
-            'name' => "required",
+            'name' => "required:products,name,{$this->segment(3)},id",
             'price' => "required",
             'image' => 'image'
         ];

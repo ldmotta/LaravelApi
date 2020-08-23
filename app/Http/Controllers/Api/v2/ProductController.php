@@ -89,17 +89,17 @@ class ProductController extends Controller
             return response()->json(['error' => 'Not found'], 404);
         }
 
-        $data = $request->all();
-
         $uploadedImage = $this->image->doUpload($request);
-
+        
+        $data = $request->all();
+        
         if (!$uploadedImage) {            
             return response()->json(['error' => 'Image upload fail!'], 500);
         }
-
+        
         $data['image'] = $uploadedImage;
         
-        $this->model->update($data);
+        $product = $this->model->update($data, $id);
         
         return response()->json($product);
     }

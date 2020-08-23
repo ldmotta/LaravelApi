@@ -28,10 +28,9 @@ class Repository implements RepositoryInterface
     }
 
     // Updates a record in a container from the given object data.
-    public function update($data)
+    public function update($data, $id)
     {
-        $record = $this->model->find($data->id);
-        return $record->update($data);
+        return $this->model->find($id)->update($data);
     }
    
     // Finds an entry of the container by its identifier and remove it.
@@ -44,7 +43,7 @@ class Repository implements RepositoryInterface
             }
         }
 
-        $this->model->destroy($product->id);
+        return $this->model->destroy($product->id);
     }
 
     // Finds an entry of the container by its identifier and returns it.    

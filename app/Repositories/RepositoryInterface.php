@@ -27,7 +27,7 @@ interface RepositoryInterface
      * @param object $data Object of tha fields that you want to update
      * @return \Illuminate\Http\Response
      */
-    public function update(array $data);
+    public function update(array $data, int $id);
 
     /**
      * Finds an entry of the container by its identifier and remove it.

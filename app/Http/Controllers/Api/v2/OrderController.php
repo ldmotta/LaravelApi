@@ -11,17 +11,19 @@ use App\Http\Requests\StoreUpdateOrderFormRequest;
 use App\Mail\SendMailUser;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
+use App\Repositories\Repository;
 
 class OrderController extends Controller
 {
-    private $pedido;
-    private $pastel;
-    private $cliente;
-    public function __construct(Order $pedido, Product $pastel, Customer $cliente)
+    protected $model;
+    private $product;
+    private $customer;
+
+    public function __construct(Order $order, Product $product, Customer $customer)
     {
-        $this->pedido = $pedido;
-        $this->pastel = $pastel;
-        $this->cliente = $cliente;
+        $this->model = new Repository($order);
+        $this->pastel = $product;
+        $this->cliente = $customer;
     }
 
     /**
@@ -31,9 +33,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = $this->pedido->getOrders();
+        $orders = $this->model->all();
 
-        return response()->json($order);
+        return response()->json($orders);
     }
 
     /**
@@ -45,49 +47,26 @@ class OrderController extends Controller
     public function store(StoreUpdateOrderFormRequest $request)
     {
         $data = $request->all();
-        
-        $product_ids = Arr::wrap(json_decode($data['product_id']));
-        
-        if(!$product_ids)
-            return response()->json(['error' => 'Informe um número inteiro ou um array de inteiros']);
+      
+        $customer = $this->customer->find($data['customer_id']);
 
-        $products = [];
-        $subtotal = 0;
-        foreach ($product_ids as $product_id) {
-            $pastel = $this->pastel->find($product_id);
-            if( !$pastel )
-                return response()->json(['error' => "pastel id {$product_id} não encontrado"]);
-            
-            if(array_key_exists($pastel->id, $products)) {
-                $products[$pastel->id]->quantidade += 1;
-                $products[$pastel->id]->total = $pastel->price * $products[$pastel->id]['quantidade'];
-            }else{
-                $products[$pastel->id] = $pastel;
-                $products[$pastel->id]->quantidade = 1;
-                $products[$pastel->id]->total = $pastel->price;
-            }
-            
-            $subtotal += (float) $pastel->price;
+        if (!$customer) {
+            return response()->json(['error' => "Customer not found!"]);
         }
 
-        $cliente = $this->cliente->find($data['client_id']);
-
-        $data['product_id'] = json_encode($product_ids);
+        $product = $this->customer->find($data['product_id']);
         
-        $pedido = $this->pedido->create($data);
+        if (!$product) {
+            return response()->json(['error' => "Product not found!"]);
+        }
+       
+        $order = $this->pedido->create($data);
 
-        if($pedido) 
-        {
-            $email_data = [
-                'name' => $cliente->name,
-                'products' => $products, 
-                'subtotal' =>  $subtotal
-            ];
-    
-            Mail::to($cliente->email)->send(new SendMailUser($email_data));
+        if ($order) {
+            Mail::to($customer->email)->send(new SendMailUser($product));
         }
 
-        return response()->json(['success' => $pedido], 201);
+        return response()->json(['success' => $order], 201);
     }
 
     /**
@@ -98,12 +77,12 @@ class OrderController extends Controller
      */
     public function show($id)
     {      
-        $pedido = $this->pedido->find($id);
+        $order = $this->model->find($id);
 
-        if(!$pedido)
+        if(!$order)
             return response()->json(['error' => 'Not found'], 404);
         
-        return response()->json($pedido);
+        return response()->json($order);
     }
 
     /**
@@ -115,14 +94,14 @@ class OrderController extends Controller
      */
     public function update(StoreUpdateOrderFormRequest $request, $id)
     {
-        $pedido = $this->pedido->find($id);
+        $order = $this->model->find($id);
 
-        if(!$pedido)
+        if(!$order)
             return response()->json(['error' => 'Not found'], 404);
 
-        $pedido->update($request->all());
+        $order = $this->model->update($request->all(), $id);
         
-        return response()->json($pedido);
+        return response()->json($order);
     }
 
     /**
@@ -133,12 +112,13 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $pedido = $this->pedido->find($id);
+        $order = $this->model->find($id);
 
-        if(!$pedido)
+        if (!$order) {
             return response()->json(['error' => 'Not found'], 404);
+        }
         
-        $pedido->delete();
+        $this->model->delete($order);
 
         return response()->json(['success' => true], 204);
     }
