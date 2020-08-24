@@ -22,7 +22,7 @@ class OrderController extends Controller
     public function __construct(Order $order, Product $product, Customer $customer)
     {
         $this->model = new Repository($order);
-        $this->pastel = $product;
+        $this->product = $product;
         $this->customer = $customer;
     }
 
@@ -54,7 +54,7 @@ class OrderController extends Controller
             return response()->json(['error' => "Customer not found!"]);
         }
 
-        $product = $this->customer->find($data['product_id']);
+        $product = $this->product->find($data['product_id']);
         
         if (!$product) {
             return response()->json(['error' => "Product not found!"]);

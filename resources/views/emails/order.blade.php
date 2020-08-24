@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<h1>Olá {{ $data['name'] }}</h1>
+<h1>Olá {{ $data['name'] }}!</h1>
 
 <p>Seguem os dados do seu pedido:</p>
 
@@ -13,13 +13,11 @@
         </tr>  
     </thead>
     <tbody>
-
         <tr>
             <td>{{ $data['product']->id }}</td>    
             <td>{{ $data['product']->name }}</td>
             <td>@convert($data['product']->price)</td>
         </tr>
-
     </tbody>
 </table>
 
