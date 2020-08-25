@@ -1,4 +1,4 @@
-## Laravel Api - Productaria
+## Laravel Api - Pastelaria
 
 ## Dependencies
 
