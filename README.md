@@ -4,6 +4,7 @@
 
 * [composer](https://getcomposer.org/)
 * [laravel-cors](https://github.com/spatie/laravel-cors)
+* [docker-composer](https://docs.docker.com/compose/)
 * PHP 7.3 ou superior
 
 ## Instalation
