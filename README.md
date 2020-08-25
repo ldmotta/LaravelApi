@@ -17,6 +17,8 @@ git clone https://github.com/ldmotta/LaravelApi.git
 2. Acesse a raiz da aplicação e execute o comando ```cd LaravelApi/```, em seguida, utilize a imagem do composer para montar os diretórios que você precisará para seu projeto Laravel e evite os custos de instalar o Composer globalmente:
 
 ```
+cd LaravelApi
+
 docker run --rm -v $(pwd):/app composer install
 ```
 
@@ -56,8 +58,40 @@ DB_USERNAME=your_db_username
 DB_PASSWORD=your_db_password
 ```
 
+Para executar o projeto, acesse o container e rode o comando abaixo no terminal:
+```
+docker-compose up -d
+```
 
+* Neste momento você já pode acessar a sua aplicação na url http://localhost
 
+Crie um usuário para o MySql
+```
+docker-compose exec db bash
+
+root@6b2a39b018af:/# mysql -u root -p
+```
+
+* Você será solicitado a inserir a senha que você definiu para a conta root do MySQL durante a instalação no seu arquivo docker-compose.
+
+```
+GRANT ALL ON laravel.* TO 'laraveluser'@'%' IDENTIFIED BY 'your_laravel_db_password';
+```
+
+Reinicie os privilégios para notificar o servidor MySQL das alterações:
+```
+FLUSH PRIVILEGES;
+```
+
+Saindo do MySql
+```
+mysql> EXIT;
+```
+
+Saia do contêiner:
+```
+root@6b2a39b018af:/# exit
+```
 
 Este comando gerará uma chave e a copiará para seu arquivo .env, garantindo que as sessões do seu usuário e os dados criptografados permaneçam seguros:
 ```
@@ -71,28 +105,21 @@ docker-compose exec app php artisan config:cache
 
 Acesse o terminal e digite o comando abaixo para criar o link simbólico para acesso as imagens publicas
 ```
-php artisan storage:link
+docker-compose exec app php artisan storage:link
 ```
 
 Execute o comando de migração para criar as tabela.
 ```
-php artisan migrate
+docker-compose exec app php artisan migrate
 ```
 
 Para popular a tabela de produtos, execute o comando abaixo.
 ```
-php artisan db:seed
+docker-compose exec app php artisan db:seed
 ```
 
 Para resolver problema de CORS, instale o [laravel-cors](https://github.com/spatie/laravel-cors)
 ```bash
-composer require spatie/laravel-cors
+docker-compose exec app composer require spatie/laravel-cors
 ```
-
-Para executar o projeto, acesse o container e rode o comando abaixo no terminal:
-
-```
-docker-compose up -d
-```
-
 Para testar a aplicação, você pode utilizar o arquivo de collections do Postman (Laravel_Api.postman_collection.json), que está localizado na raíz do projeto.
