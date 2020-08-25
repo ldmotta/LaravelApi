@@ -17,4 +17,5 @@ interface ImageRepositoryInterface
 
     public function setImageField($field);
 
+    public function setUploadFolder($newFolder);
 }

@@ -23,7 +23,7 @@ class CustomerTest extends TestCase
         $customerData = [
             'name' => 'Customer Name Test',
             'email' => 'user@email.com',
-            'phone' => '11912345678',
+            'phone' => '(11) 91234-5678',
             'birth_date' => '2020-01-01',
             'address' => 'Customer address, 123',
             'complement' => 'Complement',

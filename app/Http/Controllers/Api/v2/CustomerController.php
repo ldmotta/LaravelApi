@@ -52,8 +52,9 @@ class CustomerController extends Controller
     {      
         $customer = $this->model->find($id);
 
-        if (!$customer)
+        if (!$customer) {
             return response()->json(['error' => 'Not found'], 404);
+        }
         
         return response()->json($customer);
     }

@@ -60,5 +60,15 @@ class ImageRepository implements ImageRepositoryInterface
     {
         $this->imageField = $field;
     }
+
+    /**
+     * Defines which will be the image folder for the stored images
+     * 
+     * @param string $field
+     */
+    public function setUploadFolder($newFolder)
+    {
+        $this->uploadFolder = $newFolder;
+    }
     
 }
