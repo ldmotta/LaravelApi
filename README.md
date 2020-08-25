@@ -76,12 +76,12 @@ root@6b2a39b018af:/# mysql -u root -p
 * Você será solicitado a inserir a senha que você definiu para a conta root do MySQL durante a instalação no seu arquivo docker-compose.
 
 ```
-GRANT ALL ON laravel.* TO 'laraveluser'@'%' IDENTIFIED BY 'your_laravel_db_password';
+mysql> GRANT ALL ON laravel.* TO 'laraveluser'@'%' IDENTIFIED BY 'your_laravel_db_password';
 ```
 
 Reinicie os privilégios para notificar o servidor MySQL das alterações:
 ```
-FLUSH PRIVILEGES;
+mysql> FLUSH PRIVILEGES;
 ```
 
 Saindo do MySql
