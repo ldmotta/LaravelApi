@@ -14,14 +14,20 @@
 git clone https://github.com/ldmotta/LaravelApi.git
 ```
 
-2. Acesse a raiz da aplicação e execute o comando ```cd LaravelApi/``` e instale a aplicação via composer
+2. Acesse a raiz da aplicação e execute o comando ```cd LaravelApi/```, em seguida, utilize a imagem do composer para montar os diretórios que você precisará para seu projeto Laravel e evite os custos de instalar o Composer globalmente:
+
 ```
-composer install
+docker run --rm -v $(pwd):/app composer install
 ```
 
-3. Após finalizar a instalação renomeie o arquivo ```.env.example``` localizado na raiz do projeto, para ```.env```
+3. Defina as permissões no diretório do projeto para que ele seja propriedade do seu usuário não root:
+```
+sudo chown -R $USER:$USER ~/DiretorioDaPlicacao/LaravelApi
+```
 
-4. Utilizando um editor de sua preferência, abra o arquivo .env, e defina as configurações do servidor de e-mail para testar o envio de e-mail.
+4. Após finalizar a instalação renomeie o arquivo ```.env.example``` localizado na raiz do projeto, para ```.env```
+
+5. Utilizando um editor de sua preferência, abra o arquivo .env, e defina as configurações do servidor de e-mail para testar o envio de e-mail.
 
 **Mail settings:**
 
@@ -39,15 +45,28 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 **DB settings:**
 
-5. Crie uma base de dados para a aplicação. Ex. laravel_api e configure no arquivo .env a sessão de variáveis de acesso ao banco. Ex.
+6. Crie uma base de dados para a aplicação. Ex. laravel_api e configure no arquivo .env a sessão de variáveis de acesso ao banco. Ex.
 
 ```
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=laravel_api
 DB_USERNAME=your_db_username
 DB_PASSWORD=your_db_password
+```
+
+
+
+
+Este comando gerará uma chave e a copiará para seu arquivo .env, garantindo que as sessões do seu usuário e os dados criptografados permaneçam seguros:
+```
+docker-compose exec app php artisan key:generate
+```
+
+Você tem agora as configurações de ambiente necessárias para executar seu aplicativo. Para colocar essas configurações em um arquivo de cache, que irá aumentar a velocidade de carregamento do seu aplicativo, execute:
+```
+docker-compose exec app php artisan config:cache
 ```
 
 Acesse o terminal e digite o comando abaixo para criar o link simbólico para acesso as imagens publicas
@@ -70,10 +89,10 @@ Para resolver problema de CORS, instale o [laravel-cors](https://github.com/spat
 composer require spatie/laravel-cors
 ```
 
-Para executar o projeto, rode o comando abaixo no terminal:
+Para executar o projeto, acesse o container e rode o comando abaixo no terminal:
 
 ```
-php artisan serve
+docker-compose up -d
 ```
 
 Para testar a aplicação, você pode utilizar o arquivo de collections do Postman (Laravel_Api.postman_collection.json), que está localizado na raíz do projeto.
