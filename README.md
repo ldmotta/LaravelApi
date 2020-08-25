@@ -19,7 +19,7 @@ git clone https://github.com/ldmotta/LaravelApi.git
 ```
 cd LaravelApi
 
-docker run --rm -v $(pwd):/app composer install
+sudo docker run --rm -v $(pwd):/app composer install
 ```
 
 3. Defina as permissões no diretório do projeto para que ele seja propriedade do seu usuário não root:
@@ -53,7 +53,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=laravel_api
+DB_DATABASE=laravel
 DB_USERNAME=your_db_username
 DB_PASSWORD=your_db_password
 ```
